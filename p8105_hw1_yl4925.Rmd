@@ -6,12 +6,13 @@ output: github_document
 ---
 
 ## Problem1 
-library the package we need 
+
+Library the package we need 
 ```{r}
 library(tidyverse)
 ```
 
-
+Create dataframe
 ```{r}
 solution_df = tibble(
   vec_numeric = rnorm(10),
@@ -20,4 +21,21 @@ solution_df = tibble(
   vec_factor = factor(c("NY", "NY", "NY", "NY", "CA", "CA", "CA", "FL", "FL", "FL"))
 )
 ```
+
+Calculate mean for each variable
+```{r}
+numeric_mean = mean(pull(solution_df, var = 1))
+logical_mean = mean(pull(solution_df, var = 2))
+char_mean = mean(pull(solution_df, var = 3))
+factor_mean = mean(pull(solution_df, var = -1))
+```
+We find mean function works for vec_numeric and vec_logical, and doesn't work for vec_char and vec_factor
+
+Then we use the as.numeric function to variable.
+```{r, eval = FALSE}
+as.numeric(pull(solution_df, var = 2))
+as.numeric(pull(solution_df, var = 3))
+as.numeric(pull(solution_df, var = -1))
+```
+
 
