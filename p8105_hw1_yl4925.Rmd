@@ -51,4 +51,11 @@ mean_flipper = mean(pull(modified_penguins, var = 5))
 ```
 Speices variable indicates the speice of penguins, island variable indicates the place penguins lived in, bill_length_mm variable indicates the length of penguin's beak measured in millimeters, bill_depth_mm variable indicates the depth of penguin's beak measured in millimeters, flipper_length_mm variable indicates the length of penguin's front wing measured in millimeters, body_mass_g variable indicates weight of penguin measured in gram, sex variable shows the gender of penguin and year variable shows that when above data were recorded.
 
-The row size for penguins dataframe is `r row_size`, and the column size for penguins dataframe is `r column_size`. The mean of penguins' flipper length is `r mean_flipper`.
+The row size for penguins dataframe is `r row_size`, and the column size for penguins dataframe is `r column_size`. The mean of penguins' flipper length is `r mean_flipper`millimeters.
+
+Scatterplot of flipper_length_mm vs bill_length_mm:
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + geom_point(aes(color = species))
+ggsave("flipper and bill scatterplot.pdf")
+```
+
