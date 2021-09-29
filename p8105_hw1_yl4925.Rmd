@@ -36,8 +36,11 @@ Then we use the as.numeric function to variable.
 as.numeric(pull(solution_df, var = 2))
 as.numeric(pull(solution_df, var = 3))
 as.numeric(pull(solution_df, var = -1))
+mean(as.numeric(pull(solution_df, var = 2)))
+mean(as.numeric(pull(solution_df, var = -1)))
 ```
-We notice that both logical and factor variable are successfully convert to numeric, but char variable fail. I think the reason is that both logical and factor variable have category while char variable doesn't. But this doesn't explain what happens when we take mean.
+We notice that both logical and factor variable are successfully convert to numeric, and we can use mean() function on the converted factor variable. But char variable fail to be converted. I think the reason is that both logical and factor variable have category or rank while char variable doesn't. And in my dataframe, the conversion of factor variables into numbers is realized in the order of the letters. 
+But difference between conversion doesn't explain what happens when we take mean. I mean that although factor variables can be grouped and sorted, they are non-numerical variables and we can not use mean() function on them. 
 
 ## Problem2
 
@@ -55,7 +58,7 @@ The row size for penguins dataframe is `r row_size`, and the column size for pen
 
 Scatterplot of flipper_length_mm vs bill_length_mm:
 ```{r}
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + geom_point(aes(color = species))
+ggplot(modified_penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + geom_point(aes(color = species))
 ggsave("flipper and bill scatterplot.pdf")
 ```
 
