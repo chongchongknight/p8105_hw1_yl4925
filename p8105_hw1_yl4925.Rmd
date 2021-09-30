@@ -8,7 +8,7 @@ output: github_document
 ## Problem1 
 
 Library the package we need 
-```{r}
+```{r, include = FALSE}
 library(tidyverse)
 ```
 
@@ -25,9 +25,13 @@ solution_df = tibble(
 Calculate mean for each variable
 ```{r}
 numeric_mean = mean(pull(solution_df, var = 1))
+numeric_mean
 logical_mean = mean(pull(solution_df, var = 2))
+logical_mean
 char_mean = mean(pull(solution_df, var = 3))
+char_mean
 factor_mean = mean(pull(solution_df, var = -1))
+factor_mean
 ```
 We find mean function works for vec_numeric and vec_logical, and doesn't work for vec_char and vec_factor
 
